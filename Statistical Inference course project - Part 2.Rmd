@@ -1,0 +1,60 @@
+---
+title: "Statistical Inference course project - Part 2"
+author: "Vignesh C Iyer"
+date: "8/8/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+## Overview
+
+In this part of the project we're going to analyze the ToothGrowth data in the R datasets package.
+
+1. Load the ToothGrowth data and perform some basic exploratory data analyses
+
+2. Provide a basic summary of the data.
+
+3. Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there's other approaches worth considering)
+
+4. State your conclusions and the assumptions needed for your conclusions.
+
+Loading the ToothGrowth dataset and preparing it for analysis.
+```{r}
+#Loading the ToothGrowth dataset
+library(datasets)
+data(ToothGrowth)
+
+# Fetching the structure of the dataset
+str(ToothGrowth)
+
+# Fetching the first few rows
+head(ToothGrowth)
+
+# Summarizing the dataset
+summary(ToothGrowth)
+
+```
+
+Further breaking down the dataset for analysis
+```{r}
+unique(ToothGrowth$supp)
+unique(ToothGrowth$dose)
+```
+
+So from the above we get 2 levels of supplements and 3 levels of dose.
+
+  * supp = 'OJ', 'VC'
+  * dose = $0.5, 1,2$
+  
+Graphically, we can also use boxplot to provide a quick visual on the impact of dosage and supplement on the tooth growth, see below:
+
+```{r}
+library(ggplot2)
+tg_supp_dose <- ggplot(ToothGrowth, aes(x=dose, y=len)) 
+tg_supp_dose <- tg_supp_dose + geom_boxplot(aes(fill=factor(dose)))
+tg_supp_dose <- tg_supp_dose + geom_point()
+tg_supp_dose <- tg_supp_dose + facet_grid(.~supp)
+tg_supp_dose <- tg_supp_dose + ggtitle("Tooth Growth by Supplement & Dosage")
+tg_supp_dose
+```
