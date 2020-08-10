@@ -364,7 +364,7 @@ summary {
 
 <h1 class="title toc-ignore">Statistical Inference course project - Part 2</h1>
 <h4 class="author">Vignesh C Iyer</h4>
-<h4 class="date">8/8/2020</h4>
+<h4 class="date">8/10/2020</h4>
 
 </div>
 
@@ -433,7 +433,49 @@ tg_supp_dose</code></pre>
 <h3>(a) Hypothesis testing by Supplements</h3>
 <p>H0 = Both the supplements have the same mean</p>
 <p>Ha = The Means are different</p>
+<pre class="r"><code>t.test(ToothGrowth$len[ToothGrowth$supp == &quot;OJ&quot;], 
+       ToothGrowth$len[ToothGrowth$supp == &quot;VC&quot;],
+       paired = FALSE,
+       var.equal = FALSE)</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  ToothGrowth$len[ToothGrowth$supp == &quot;OJ&quot;] and ToothGrowth$len[ToothGrowth$supp == &quot;VC&quot;]
+## t = 1.9153, df = 55.309, p-value = 0.06063
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.1710156  7.5710156
+## sample estimates:
+## mean of x mean of y 
+##  20.66333  16.96333</code></pre>
+<p>From the above test hypothesis result we see that the p-value 0.06 which is close to 0.05 and also we see a 0 within the confidence interval and hence we cannot reject the null hypothesis. Thus, we can conclude that the use of supplements <strong>does not have an impact on tooth growth</strong></p>
 </div>
+<div id="b-hypothesis-testing-by-dosage" class="section level3">
+<h3>(b) Hypothesis testing by Dosage</h3>
+<pre class="r"><code>t.test(ToothGrowth$len[ToothGrowth$dose == 2], 
+       ToothGrowth$len[ToothGrowth$dose == 1],
+       paired = FALSE,
+       var.equal = TRUE)</code></pre>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  ToothGrowth$len[ToothGrowth$dose == 2] and ToothGrowth$len[ToothGrowth$dose == 1]
+## t = 4.9005, df = 38, p-value = 1.811e-05
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  3.735613 8.994387
+## sample estimates:
+## mean of x mean of y 
+##    26.100    19.735</code></pre>
+<p>We find from the above observation that the p-value is less than 0 and so the null hypothesis can be rejected and we find that the confidence interval is greater than 0 and for any dosage 1mg or 2mg we find that it has a significant tooth growth.</p>
+</div>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<ol style="list-style-type: lower-alpha">
+<li><strong>The use of supplements does not have an impact on tooth growth</strong>.</li>
+<li><strong>Increase in the dosage accelerates tooth growth</strong></li>
+</ol>
 </div>
 
 

@@ -1,7 +1,7 @@
 ---
 title: "Statistical Inference course project - Part 2"
 author: "Vignesh C Iyer"
-date: "8/8/2020"
+date: "8/10/2020"
 output:
   html_document: default
   pdf_document: default
@@ -68,3 +68,28 @@ Applying the Hypothesis Testing, we conduct it based on two parameters
   H0 = Both the supplements have the same mean
   
   Ha = The Means are different
+  
+```{r}
+t.test(ToothGrowth$len[ToothGrowth$supp == "OJ"], 
+       ToothGrowth$len[ToothGrowth$supp == "VC"],
+       paired = FALSE,
+       var.equal = FALSE)
+```
+
+From the above test hypothesis result we see that the p-value 0.06 which is close to 0.05 and also we see a 0 within the confidence interval and hence we cannot reject the null hypothesis. Thus, we can conclude that the use of supplements **does not have an impact on tooth growth**
+
+### (b) Hypothesis testing by Dosage
+
+```{r}
+t.test(ToothGrowth$len[ToothGrowth$dose == 2], 
+       ToothGrowth$len[ToothGrowth$dose == 1],
+       paired = FALSE,
+       var.equal = TRUE)
+```
+
+We find from the above observation that the p-value is less than 0 and so the null hypothesis can be rejected and we find that the confidence interval is greater than 0 and for any dosage 1mg or 2mg we find that it has a significant tooth growth.
+
+## Conclusion
+
+  a. **The use of supplements does not have an impact on tooth growth**.
+  b. **Increase in the dosage accelerates tooth growth**
