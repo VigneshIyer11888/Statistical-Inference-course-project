@@ -3,8 +3,8 @@ title: "Statistical Inference course project - Part 2"
 author: "Vignesh C Iyer"
 date: "8/8/2020"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ## Overview
@@ -24,9 +24,6 @@ Loading the ToothGrowth dataset and preparing it for analysis.
 #Loading the ToothGrowth dataset
 library(datasets)
 data(ToothGrowth)
-
-# Fetching the structure of the dataset
-str(ToothGrowth)
 
 # Fetching the first few rows
 head(ToothGrowth)
@@ -58,3 +55,16 @@ tg_supp_dose <- tg_supp_dose + facet_grid(.~supp)
 tg_supp_dose <- tg_supp_dose + ggtitle("Tooth Growth by Supplement & Dosage")
 tg_supp_dose
 ```
+
+## Comparison of Tooth growth based on supplements and dosage
+
+Applying the Hypothesis Testing, we conduct it based on two parameters
+
+* Do the use of supplements really have an impact on the tooth growth?
+* Does an increased amount of dosage accelerate teeth growth?
+
+### (a) Hypothesis testing by Supplements
+
+  H0 = Both the supplements have the same mean
+  
+  Ha = The Means are different
