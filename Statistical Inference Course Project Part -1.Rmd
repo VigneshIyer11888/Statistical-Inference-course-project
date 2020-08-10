@@ -3,8 +3,8 @@ title: "Statistical Inference course project - Part 1"
 author: "Vignesh C Iyer"
 date: "8/10/2020"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ## Overview
